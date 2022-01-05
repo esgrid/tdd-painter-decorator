@@ -6,7 +6,7 @@ describe("PaintCan",
         let paintCan;
         beforeEach(
             function () {
-                paintCan = new PaintCan(5);
+                paintCan = new PaintCan();
                 paintCanEmpty = new PaintCan(0);
             }
         );

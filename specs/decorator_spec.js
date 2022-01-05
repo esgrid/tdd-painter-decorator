@@ -12,8 +12,8 @@ describe("Decorator",
 
         beforeEach(
             function () {
-                decorator = new Decorator;
-                can1 = new PaintCan;
+                decorator = new Decorator();
+                can1 = new PaintCan();
                 can2 = new PaintCan(4);
                 room = new Room(15);
             }
@@ -49,7 +49,7 @@ describe("Decorator",
                 );
                 it('checks if room cannot be painted',
                     function () {
-                        
+
                     }
                 );
                 it('should paint room',
