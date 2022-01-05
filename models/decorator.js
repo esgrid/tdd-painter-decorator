@@ -24,4 +24,27 @@ Decorator.prototype.paintRoom = function (room) {
     room.paintRoom();
 }
 
+Decorator.prototype.decreasePaintStock = function (room) {
+    areaToPaint = room.area;
+    for (const can of this.paintStock) {
+        if (areaToPaint >= can.litres) {
+            areaToPaint -= can.litres;
+            can.emptyPaintCan();
+        } else {            
+            can.litres -= areaToPaint;
+            areaToPaint = 0;
+        }        
+    }
+}
+
+Decorator.prototype.removeEmptyStock = function () {
+    let total = 0;
+    for (const can of this.paintStock) {
+        if (can.litres === 0) {
+            total++;
+        }
+    }
+    this.paintStock.splice(0, total);
+}
+
 module.exports = Decorator;

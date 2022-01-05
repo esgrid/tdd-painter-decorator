@@ -16,6 +16,7 @@ describe("Decorator",
                 decorator = new Decorator();
                 can1 = new PaintCan();
                 can2 = new PaintCan(4);
+                can3 = new PaintCan(10);
                 room = new Room(15);
                 room1 = new Room(8);
             }
@@ -70,17 +71,20 @@ describe("Decorator",
                     function () {
                         decorator.addPaintCan(can1);
                         decorator.addPaintCan(can2);
-                        decorator.paintRoom(room1);
+                        decorator.addPaintCan(can3);
+                        decorator.paintRoom(room);
                         decorator.decreasePaintStock(room);
-                        assert.strictEqual(decorator.litresInStock(), 1);
+                        assert.strictEqual(decorator.litresInStock(), 4);
                     }
                 );
                 it('should remove empty paint cans from stock',
                     function () {
                         decorator.addPaintCan(can1);
                         decorator.addPaintCan(can2);
-                        decorator.paintRoom(room1);
+                        decorator.addPaintCan(can3);
+                        decorator.paintRoom(room);
                         decorator.decreasePaintStock(room);
+                        decorator.removeEmptyStock();
                         assert.strictEqual(decorator.paintStock.length, 1);
                     }
                 );          
