@@ -65,7 +65,25 @@ describe("Decorator",
                         decorator.paintRoom(room);
                         assert.strictEqual(room.painted, true);
                     }
-                );                
+                );
+                it('should decrease paint in stock after painting room',
+                    function () {
+                        decorator.addPaintCan(can1);
+                        decorator.addPaintCan(can2);
+                        decorator.paintRoom(room1);
+                        decorator.decreasePaintStock(room);
+                        assert.strictEqual(decorator.litresInStock(), 1);
+                    }
+                );
+                it('should remove empty paint cans from stock',
+                    function () {
+                        decorator.addPaintCan(can1);
+                        decorator.addPaintCan(can2);
+                        decorator.paintRoom(room1);
+                        decorator.decreasePaintStock(room);
+                        assert.strictEqual(decorator.paintStock.length, 1);
+                    }
+                );          
             }
         );
     }
