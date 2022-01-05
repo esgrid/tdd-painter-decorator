@@ -9,6 +9,7 @@ describe("Decorator",
         let can1;
         let can2;
         let room;
+        let room1;
 
         beforeEach(
             function () {
@@ -16,6 +17,7 @@ describe("Decorator",
                 can1 = new PaintCan();
                 can2 = new PaintCan(4);
                 room = new Room(15);
+                room1 = new Room(8);
             }
         );
         it('should start with zero stock', 
@@ -40,21 +42,28 @@ describe("Decorator",
                 assert.strictEqual(actual, 9);
             }
         );
-        describe("room",
+        describe("Room",
             function () {
                 it('checks if room can be painted',
                     function () {
-
+                        decorator.addPaintCan(can1);
+                        decorator.addPaintCan(can2);
+                        const actual = decorator.canPaintRoom(room1.area);
+                        assert.strictEqual(actual, true);                        
                     }
                 );
                 it('checks if room cannot be painted',
                     function () {
-
+                        decorator.addPaintCan(can1);
+                        decorator.addPaintCan(can2);
+                        const actual = decorator.canPaintRoom(room.area);
+                        assert.strictEqual(actual, false);
                     }
                 );
                 it('should paint room',
                     function () {
-
+                        decorator.paintRoom(room);
+                        assert.strictEqual(room.painted, true);
                     }
                 );                
             }
